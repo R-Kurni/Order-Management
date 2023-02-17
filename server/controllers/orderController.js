@@ -11,7 +11,7 @@ class orderController {
 
 	static async getOrders(req, res, next) {
 		try {
-			res.status(200).json();
+			res.status(200).json({ message: "halo" });
 		} catch (error) {
 			next(error);
 		}
