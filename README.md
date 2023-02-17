@@ -4,8 +4,8 @@
 
 1. Register User
 2. Login User
-3. Create New Order
-4. Read Order List
+3. Read Order List
+4. Create New Order
 
 &nbsp;
 
@@ -82,13 +82,13 @@ OR
 
 &nbsp;
 
-## Release 1
+## Release 2
 
-- Create register feature for User
-- Buatlah otentikasi untuk pengamanan
+- Create login feature for User
+- Create authentication for safety
 
 **POST /login**  
-Description : login for student
+Description : login for User
 
 Request Body
 
@@ -111,7 +111,11 @@ Response 400
 
 ```json
 {
-	"message": "Input email/password required"
+    "message": "Email is required"
+}
+OR
+{
+    "message": "Password is required"
 }
 ```
 
@@ -125,14 +129,12 @@ Response 401
 
 &nbsp;
 
-## Release 2
+## Release 3
 
-- Buatlah fitur pendaftaran kelas (Enrollment) agar student dapat mendaftarkan dirinya pada kelas yang diinginkan
+- Read Order List of the logged in User
 
-**POST /enrollments/:courseId**
-
-Description : create enrollment between logged student and course.  
-Enrollment to 1 course by id (params : courseId).
+**GET /orders**  
+Description : Order List of the logged in User
 
 Request Header
 
@@ -142,33 +144,10 @@ Request Header
 }
 ```
 
-Response 201
+Response 200
 
 ```json
 {
 	"message": "Success enroll to Course <course id>"
 }
 ```
-
-Response 401
-
-```json
-{
-	"message": "Unauthorized"
-}
-```
-
-Response 404
-
-```json
-{
-	"message": "Course <course id> not found"
-}
-```
-
-&nbsp;
-
-**Note**
-
-- Tanyakan kepada diri kalian, bagaimana hubungan antar tabel
-- Pastikan kalian mengamankan REST API dengan otentikasi (Authentication)
