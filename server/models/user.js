@@ -22,14 +22,14 @@ module.exports = (sequelize, DataTypes) => {
 					msg: "Email must be unique",
 				},
 				validate: {
-					isEmail: {
-						msg: "Invalid email format",
-					},
 					notNull: {
 						msg: "Email is required",
 					},
 					notEmpty: {
 						msg: "Email is required",
+					},
+					isEmail: {
+						msg: "Invalid email format",
 					},
 				},
 			},
