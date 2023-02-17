@@ -147,7 +147,19 @@ Request Header
 Response 200
 
 ```json
-{
-	"message": "Success enroll to Course <course id>"
-}
+[]
+OR
+[
+  {
+    "id": "integer",
+    "name": "string",
+    "quantity": "integer",
+    "price": "integer",
+    "totalPrice": "integer",
+    "UserId": "integer",
+    "createdAt": "string",
+    "updatedAt": "string"
+  },
+  ...
+]
 ```

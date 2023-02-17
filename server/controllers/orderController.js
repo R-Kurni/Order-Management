@@ -11,7 +11,12 @@ class orderController {
 
 	static async getOrders(req, res, next) {
 		try {
-			res.status(200).json({ message: "halo" });
+			const { id } = req.user;
+			const orders = await Order.findAll({
+				where: { UserId: id },
+				order: [["id", "DESC"]],
+			});
+			res.status(200).json(orders);
 		} catch (error) {
 			next(error);
 		}
