@@ -5,7 +5,14 @@ const { encodeToken } = require("../helpers/jwt");
 class userController {
 	static async register(req, res, next) {
 		try {
-			res.status(201).json();
+			const { email, password } = req.body;
+			const newUser = await User.create({
+				email,
+				password,
+			});
+			res
+				.status(201)
+				.json({ message: `Email ${newUser.email} successfully created.` });
 		} catch (error) {
 			next(error);
 		}
