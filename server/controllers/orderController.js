@@ -1,9 +1,18 @@
-const { Order, User } = require("../models");
+const { Order } = require("../models");
 
 class orderController {
 	static async createOrder(req, res, next) {
 		try {
-			await Order.create();
+			const { id } = req.user;
+			const { name, quantity, price } = req.body;
+			const product = await Order.create({
+				name,
+				quantity,
+				price,
+				totalPrice: quantity * price,
+				UserId: id,
+			});
+			res.status(201).json(product);
 		} catch (error) {
 			next(error);
 		}

@@ -163,3 +163,71 @@ OR
   ...
 ]
 ```
+
+&nbsp;
+
+## Release 4
+
+- Create New Order for the logged in User
+
+**POST /orders**  
+Description : New Order for the logged in User
+
+Request Header
+
+```json
+{
+	"access_token": "string"
+}
+```
+
+Request Body
+
+```json
+{
+	"name": "string",
+	"quantity": "integer",
+	"price": "integer"
+}
+```
+
+Response 200
+
+```json
+{
+	"id": "integer",
+	"name": "string",
+	"quantity": "integer",
+	"price": "integer",
+	"totalPrice": "integer",
+	"UserId": "integer",
+	"updatedAt": "string",
+	"createdAt": "string"
+}
+```
+
+Response 400
+
+```json
+{
+    "message": "Name is required"
+}
+OR
+{
+    "message": "Quantity is required"
+}
+OR
+{
+    "message": "Quantity minimum 1"
+}
+OR
+{
+    "message": "Price is required"
+}
+OR
+{
+    "message": "Price minimum Rp 9.999,00"
+}
+```
+
+&nbsp;
