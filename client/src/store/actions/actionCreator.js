@@ -3,11 +3,14 @@ import axios from "axios";
 export const register = (formRegister) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios({
+			const res = await fetch("http://localhost:3000/register", {
 				method: "POST",
-				url: `http://localhost:3000/register`,
-				data: formRegister,
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formRegister),
 			});
+			const data = await res.json();
 			return data;
 		} catch (error) {
 			console.log(error);
@@ -18,11 +21,14 @@ export const register = (formRegister) => {
 export const login = (formLogin) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios({
+			const res = await fetch("http://localhost:3000/login", {
 				method: "POST",
-				url: `http://localhost:3000/login`,
-				data: formLogin,
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formLogin),
 			});
+			const data = await res.json();
 			if (data.access_token) {
 				localStorage.setItem("access_token", data.access_token);
 			}
@@ -51,6 +57,25 @@ export const fetchOrders = () => {
 				},
 			});
 			dispatch(fetchOrdersSuccess(data));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+export const createOrder = (formOrder) => {
+	return async (dispatch) => {
+		try {
+			const { data } = await axios({
+				method: "POST",
+				url: `http://localhost:3000/orders`,
+				data: formOrder,
+				headers: {
+					access_token: localStorage.access_token,
+				},
+			});
+			await dispatch(fetchOrders());
+			return data;
 		} catch (error) {
 			console.log(error);
 		}

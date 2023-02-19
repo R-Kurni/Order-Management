@@ -1,16 +1,9 @@
-import {
-	Container,
-	Col,
-	Row,
-	Table,
-	Form,
-	Card,
-	InputGroup,
-} from "react-bootstrap";
+import { Container, Col, Row, Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchOrders } from "../store/actions/actionCreator";
 import OrderListData from "../components/OrderListData";
+import AddOrderModal from "../components/AddOrderModal";
 
 export default function HomePage() {
 	const dispatch = useDispatch();
@@ -31,7 +24,7 @@ export default function HomePage() {
 							</div>
 						</Row>
 						<Row>
-							<div className="BTN">+ Create New Order</div>
+							<AddOrderModal />
 						</Row>
 					</div>
 				) : (
@@ -43,7 +36,7 @@ export default function HomePage() {
 							</Col>
 							<Col lg={3} className="add-btn">
 								<Row>
-									<div className="BTN">+ Create New Order</div>
+									<AddOrderModal />
 								</Row>
 							</Col>
 						</Row>
@@ -52,9 +45,9 @@ export default function HomePage() {
 								<thead>
 									<tr>
 										<th className="col-1 text-center">Order ID</th>
-										<th className="col-4 text-center">Name of Product</th>
+										<th className="col-4 text-center">Product Name</th>
 										<th className="col-1 text-center">Quantity</th>
-										<th className="col-3 text-center">Price / Product</th>
+										<th className="col-3 text-center">Price / Unit</th>
 										<th className="col-3 text-center">Total Price</th>
 									</tr>
 								</thead>
