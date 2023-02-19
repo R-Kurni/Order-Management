@@ -2,6 +2,7 @@ import { createBrowserRouter, redirect } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import LoginRegister from "../views/LoginRegister.jsx";
 import HomePage from "../views/HomePage.jsx";
+import NotFoundPage from "../views/NotFoundPage.jsx";
 
 const loginRequiredLoader = () => {
 	if (!localStorage.access_token) {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <HomePage />,
+			},
+			{
+				path: "*",
+				element: <NotFoundPage />,
 			},
 		],
 	},
