@@ -33,35 +33,6 @@ body {
 	gap: 10px;
 }
 
-.Title-Name {
-	color: #3f941a;
-	font-size: 36px;
-	font-weight: bolder;
-}
-
-.BTN {
-	background-color: #f36919;
-	border-width: 2px;
-	border-style: solid;
-	color: white;
-	padding: 15px 100px;
-	border-radius: 5px;
-	font-weight: bold;
-}
-
-.BTN:hover {
-	background-color: #f3f6f4;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #f8d3be;
-	color: #f36919;
-}
-
-.BTN:active {
-	background-color: #f36919;
-	color: white;
-}
-
 .login-register {
 	display: flex;
 	justify-content: center;
@@ -121,6 +92,67 @@ body {
 	color: #424242;
 }
 
+.home-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.no-order {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 25% 0%;
+	width: 100%;
+}
+
+.yes-order {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 5% 0%;
+	width: 100%;
+}
+
+.width-100 {
+	width: 100%;
+}
+
+.Title-Name {
+	color: #424242;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+}
+
+.add-btn {
+	display: flex;
+	justify-content: end;
+}
+
+.BTN {
+	background-color: #eeeeee;
+	border-width: 2px;
+	border-color: #5b5b5b;
+	border-style: solid;
+	color: #5b5b5b;
+	padding: 10px;
+	border-radius: 8px;
+	font-weight: bold;
+}
+
+.BTN:hover {
+	background-color: #5b5b5b;
+	border-width: 2px;
+	border-color: #5b5b5b;
+	border-style: solid;
+	color: #eeeeee;
+}
+
 .modal-container {
 	max-height: 60vh;
 	padding-left: 20px;
@@ -131,4 +163,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.text-center {
+	text-align: center;
 }
