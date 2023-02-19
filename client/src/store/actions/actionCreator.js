@@ -1,4 +1,4 @@
-export const createUser = (userInput) => {
+export const register = (formRegister) => {
 	return async (dispatch) => {
 		try {
 			const res = await fetch("http://localhost:3000/register", {
@@ -6,16 +6,17 @@ export const createUser = (userInput) => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify(userInput),
+				body: JSON.stringify(formRegister),
 			});
-			return res;
+			const data = await res.json();
+			return data;
 		} catch (error) {
 			console.log(error);
 		}
 	};
 };
 
-export const loginUser = (userInput) => {
+export const login = (formLogin) => {
 	return async (dispatch) => {
 		try {
 			const res = await fetch("http://localhost:3000/login", {
@@ -23,10 +24,12 @@ export const loginUser = (userInput) => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify(userInput),
+				body: JSON.stringify(formLogin),
 			});
 			const data = await res.json();
-			console.log(data);
+			if (data.access_token) {
+				localStorage.setItem("access_token", data.access_token);
+			}
 			return data;
 		} catch (error) {
 			console.log(error);
