@@ -37,6 +37,10 @@ export default function LoginRegister() {
 					email: "",
 					password: "",
 				});
+				setFormLogin({
+					email: "",
+					password: "",
+				});
 				setValidationRegister("");
 				setKey("login");
 			}

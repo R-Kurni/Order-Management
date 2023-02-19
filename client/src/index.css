@@ -87,11 +87,6 @@ body {
 	color: #424242;
 }
 
-.nav-tabs .nav-item.show .nav-link,
-.nav-tabs .nav-link:visited {
-	color: #424242;
-}
-
 .home-content {
 	display: flex;
 	justify-content: center;
@@ -154,9 +149,8 @@ body {
 }
 
 .modal-container {
-	max-height: 60vh;
 	padding-left: 20px;
-	padding-right: 60px;
+	padding-right: 20px;
 }
 
 .center {
