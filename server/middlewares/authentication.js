@@ -10,13 +10,11 @@ const authentication = async (req, res, next) => {
 
 		const payload = decodeToken(access_token);
 		if (!payload) {
-			console.log("masuk payload");
 			throw { name: "invalid_token" };
 		}
 
 		const user = await User.findByPk(payload.id);
 		if (!user) {
-			console.log("masuk user");
 			throw { name: "invalid_token" };
 		}
 

@@ -1,7 +1,6 @@
 const errorHandler = (err, req, res, next) => {
 	let code = 500;
 	let message = "Internal Server Error";
-
 	if (err.name === "SequelizeValidationError") {
 		let errMsg = err.errors.map((el) => el.message);
 		code = 400;
@@ -22,7 +21,6 @@ const errorHandler = (err, req, res, next) => {
 		code = 401;
 		message = "Invalid token";
 	}
-	console.log(err);
 	res.status(code).json({ message });
 };
 
