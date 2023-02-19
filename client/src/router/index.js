@@ -4,14 +4,23 @@ import LoginRegister from "../views/LoginRegister.jsx";
 import HomePage from "../views/HomePage.jsx";
 
 const loginRequiredLoader = () => {
-	if (localStorage.getItem("access_token")) {
-		return redirect("/sign-in");
+	if (!localStorage.access_token) {
+		return redirect("/login");
 	}
+	return null;
+};
+
+const logoutRequiredLoader = () => {
+	if (localStorage.access_token) {
+		return redirect("/");
+	}
+	return null;
 };
 
 const router = createBrowserRouter([
 	{
-		path: "/sign-in",
+		path: "/login",
+		loader: logoutRequiredLoader,
 		element: <LoginRegister />,
 	},
 	{
