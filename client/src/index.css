@@ -10,8 +10,6 @@ body {
 .NavBar {
 	display: flex;
 	justify-content: space-between;
-	margin-left: 50px;
-	margin-right: 50px;
 	height: 50px;
 }
 
@@ -24,7 +22,15 @@ body {
 }
 
 .nav-text:hover {
-	color: #f36919;
+	color: white;
+	font-weight: bolder;
+}
+
+.nav-logout {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
 
 .Title-Name {
