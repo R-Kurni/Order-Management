@@ -57,6 +57,11 @@ body {
 	font-size: 12px;
 }
 
+.validation-text::before {
+	content: ".";
+	visibility: hidden;
+}
+
 .BTN-login-register {
 	background-color: #eeeeee;
 	border-width: 2px;

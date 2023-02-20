@@ -111,7 +111,7 @@ export default function LoginRegister() {
 														{validationLogin}*
 													</div>
 												) : (
-													<div> </div>
+													<div className="validation-text"> </div>
 												)}
 
 												<br></br>
@@ -156,7 +156,7 @@ export default function LoginRegister() {
 														{validationRegister}*
 													</div>
 												) : (
-													<div> </div>
+													<div className="validation-text"> </div>
 												)}
 
 												<br></br>
