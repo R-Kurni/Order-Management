@@ -120,7 +120,7 @@ export default function AddOrderModal() {
 							{validationAddOrder ? (
 								<div className="validation-text">{validationAddOrder}*</div>
 							) : (
-								<div> </div>
+								<div className="validation-text"> </div>
 							)}
 						</Row>
 					</Modal.Body>
