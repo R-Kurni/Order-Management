@@ -5,6 +5,7 @@ import { createOrder } from "../store/actions/actionCreator";
 
 export default function AddOrderModal() {
 	const dispatch = useDispatch();
+	const [validationAddOrder, setValidationAddOrder] = useState("");
 	const [show, setShow] = useState(false);
 	const [formOrder, setFormOrder] = useState({
 		name: "",
@@ -30,8 +31,20 @@ export default function AddOrderModal() {
 
 	const submitAddOrderHandler = (e) => {
 		e.preventDefault();
-		dispatch(createOrder(formOrder));
-		setShow(false);
+		dispatch(createOrder(formOrder)).then((data) => {
+			if (
+				data.message === "Name is required" ||
+				data.message === "Quantity is required" ||
+				data.message === "Price is required" ||
+				data.message === "Quantity minimum 1" ||
+				data.message === "Price minimum Rp 9.999,00"
+			) {
+				setValidationAddOrder(`${data.message}`);
+			} else {
+				setShow(false);
+				setFormOrder("");
+			}
+		});
 	};
 	return (
 		<>
@@ -78,7 +91,7 @@ export default function AddOrderModal() {
 										className="form-control"
 										name="quantity"
 										placeholder="Input quantity ..."
-										value={formOrder.email}
+										value={formOrder.quantity}
 										onChange={handleFormOrder}
 									/>
 								</Form.Group>
@@ -95,13 +108,20 @@ export default function AddOrderModal() {
 											className="form-control"
 											name="price"
 											placeholder="Enter price ..."
-											value={formOrder.owner}
+											value={formOrder.price}
 											onChange={handleFormOrder}
 										/>
 										<InputGroup.Text>.00</InputGroup.Text>
 									</InputGroup>
 								</Form.Group>
 							</Col>
+						</Row>
+						<Row>
+							{validationAddOrder ? (
+								<div className="validation-text">{validationAddOrder}*</div>
+							) : (
+								<div> </div>
+							)}
 						</Row>
 					</Modal.Body>
 					<Modal.Footer>
