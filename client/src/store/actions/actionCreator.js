@@ -66,14 +66,15 @@ export const fetchOrders = () => {
 export const createOrder = (formOrder) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios({
+			const res = await fetch("http://localhost:3000/orders", {
 				method: "POST",
-				url: `http://localhost:3000/orders`,
-				data: formOrder,
 				headers: {
+					"Content-Type": "application/json",
 					access_token: localStorage.access_token,
 				},
+				body: JSON.stringify(formOrder),
 			});
+			const data = await res.json();
 			await dispatch(fetchOrders());
 			return data;
 		} catch (error) {
